@@ -4,11 +4,13 @@ import * as flightsCtrl from '../controllers/flights.js'
 const router = Router()
 
 
-// GET /flights/new
+// GET localhost3000/flights/new
 router.get('/new', flightsCtrl.new)
 
-//POST /flights
+//POST localhost:3000/flights
 router.post('/', flightsCtrl.create)
+
+router.get('/', flightsCtrl.index)
 
 export {
 	router
