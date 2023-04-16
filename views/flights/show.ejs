@@ -1,0 +1,26 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/show.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <section>
+    <div>Airline: </div>
+    <div><%= flight.airline %></div>
+    <div>Airport: </div>
+    <div><%= flight.airport %></div>
+    <div>Flight#: </div>
+    <div><%= flight.flightNo %></div>
+    <div>Departs: </div>
+    <div><%= flight.departs %></div>
+    <div>
+      <%= flight.title %> 
+      <a href="/flights/<%= flight._id %>/edit">
+        <button>Edit Flight</button>
+      </a>
+    </div>
+    <div>Release Year: </div>
+  </section>
+</main>
+  
+<%- include('../partials/footer') %>
