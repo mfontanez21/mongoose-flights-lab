@@ -21,10 +21,8 @@ function newFlight(req, res){
 }
 
 function create(req, res){
-  if (req.body.cast) {
-    req.body.cast = req.body.cast.split(', ')
-  }
-	for (let key in req.body) {
+  console.log(req.body);
+  for (let key in req.body) {
 	  if (req.body[key] === '') delete req.body[key]
 	}
   Flight.create(req.body)
@@ -80,7 +78,7 @@ function edit(req, res){
 }
 
 function update(req, res){
-  Movie.findByIdAndUpdate(req.params.flightId, req.body, {new: true})
+  Flight.findByIdAndUpdate(req.params.flightId, req.body, {new: true})
     .then(movie => {
       res.redirect(`/flights/${flight._id}`)
     })
@@ -90,6 +88,24 @@ function update(req, res){
   })
 }
 
+function createTicket(req, res) {
+  Flight.findById(req.params.flightId)
+  .then(flight => {
+    flight.tickets.push(req.body)
+    flight.save()
+    .then(() => {
+      res.redirect(`/flights/${flight._id}`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect("/")
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/")
+  })
+}
 
 export {
   newFlight as new,
@@ -98,5 +114,6 @@ export {
   show,
   deleteFlight as delete,
   edit,
-  update
+  update,
+  createTicket,
 }
