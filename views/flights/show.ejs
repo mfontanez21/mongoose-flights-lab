@@ -14,7 +14,12 @@
     <div>Departs: </div>
     <div><%= flight.departs %></div>
     <div>Available Meals:</div>
-    <div><%= console.log(flight.meals); %></div>
+    <div><% flight.meals.forEach(function(meal){ %>
+      <tr>
+          <td><%= meal.name %></td>
+        </tr>
+      <% }) %>
+      </div>
     <div>
       <%= flight.title %> 
       <a href="/flights/<%= flight._id %>/edit">
