@@ -4,10 +4,11 @@
 
 <main>
 	<h1><%= title %></h1>
-  <p>Please first ensure that the meal is not in the dropdown
-    <select>
+    <ul>
       <% meals.forEach(function(meal) { %>
-        <option><%= meal.name %></option>
+        <li>
+          <%= meal.name %>
+        </li>
       <% }) %>
     </select>
   </p>
